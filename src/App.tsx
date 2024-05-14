@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button"
+import { MainNav } from "./components/main-nav"
 
 export default function Home() {
   return (
-    <div>
-      <Button>Click me</Button>
+    <div className="flex items-center justify-center h-screen">
+      <MainNav />
     </div>
   )
 }
