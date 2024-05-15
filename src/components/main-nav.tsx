@@ -6,10 +6,10 @@ import { Icons } from "@/components/icons";
 
 export function MainNav() {
   return (
-    <header className="bg-background sticky top-0 z-40 w-fit border-2 rounded-lg">
+    <header className="bg-background sticky top-0 z-40 w-fit rounded-lg">
       <div className="container p-1 flex h-12 items-center space-x-4 sm:justify-center sm:space-x-0">
         <div className="flex gap-6 md:gap-10">
-          <nav className="flex gap-2">
+          <nav className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex rounded-lg border-2 overflow-hidden">
             {mainNav.map((item, index) => {
               const Icon = item.icon ? Icons[item.icon] : ChevronLeftIcon;
               return item.to ? (
@@ -18,14 +18,14 @@ export function MainNav() {
                   to={item.to}
                   className={({ isActive }) =>
                     cn(
-                      "flex items-center text-sm font-medium text-muted-foreground p-2",
+                      "slide-effect list-none w-[45px] block py-3.5 px-2 text-center transition-all duration-500 no-underline text-sm font-medium text-muted-foreground",
                       item.disabled && "cursor-not-allowed opacity-80",
-                      isActive && "bg-foreground/10 rounded-md"
+                      isActive && "active"
+                      // isActive && "active animate-pulse duration-2000 ease-linear text-[#262626] delay-500"
                     )
                   }
                 >
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                  {/* <span>{item.title}</span> */}
+                  <Icon className="h-5 w-5 m-auto" aria-hidden="true" />
                 </NavLink>
               ) : (
                 <span
@@ -36,6 +36,7 @@ export function MainNav() {
                 </span>
               );
             })}
+            <div className="slide"></div>
           </nav>
         </div>
       </div>
