@@ -1,30 +1,24 @@
 import { MainNav } from "@/components/main-nav";
-import { buttonVariants } from "./ui/button";
-import { Link } from "react-router-dom";
 import { NavItem } from "@/types";
-import { LogIn } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Separator } from "@/components/ui/separator"
+import { ThemeToggle } from "./theme-toggle";
+import { TooltipProvider } from "./ui/tooltip";
 
 export function SiteHeader() {
   return (
-    <header className="bg-background sticky top-0 z-40 w-fit rounded-lg border-2 ">
-      <div className="container p-0 flex h-12 items-center space-x-4 sm:justify-between sm:space-x-0">
-        <MainNav navItems={mainNav} />
-        <div className="flex flex-1 items-center justify-end space-x-4 p-2">
-          <nav className="flex items-center space-x-2">
-            <Link
-              to={"/"}
-              className={cn(
-                buttonVariants({ variant: "outline", size: "icon" }),
-                "h-[35px]"
-              )}
-            >
-              <LogIn className="w-4 h-4" />
-            </Link>
-          </nav>
+    <TooltipProvider delayDuration={0}>
+      <header className="bg-background sticky top-0 z-40 w-fit rounded-xl border-2">
+        <div className="container p-0 flex h-12 items-center space-x-4 sm:justify-between sm:space-x-0">
+          <MainNav navItems={mainNav} />
+          <div className="flex flex-1 items-center justify-end space-x-4 pr-1">
+            <Separator orientation="vertical" decorative className="h-9 w-[0.07rem] rounded-full" />
+            <nav className="flex items-center space-x-2">
+              <ThemeToggle />
+            </nav>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </TooltipProvider>
   );
 }
 
