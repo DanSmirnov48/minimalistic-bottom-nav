@@ -103,30 +103,22 @@
   text-decoration: none;
 } */
 
-ul li.active a {
+/* ul li.active a {
   color: #262626;
-}
+} */
 
-ul li:nth-child(1).active ~ .slide {
+.slide-effect:nth-child(1).active ~ .slide {
   left: 0;
   opacity: 1;
 }
-ul li:nth-child(2).active ~ .slide {
+.slide-effect:nth-child(2).active ~ .slide {
   left: 45px;
   opacity: 1;
 }
-ul li:nth-child(3).active ~ .slide {
+.slide-effect:nth-child(3).active ~ .slide {
   left: 90px;
   opacity: 1;
 }
-/* ul li:nth-child(4).active ~ .slide {
-  left: 450px;
-  opacity: 1;
-}
-ul li:nth-child(5).active ~ .slide {
-  left: 600px;
-  opacity: 1;
-} */
 
 .slide {
   position: absolute;
