@@ -3,7 +3,8 @@ import {
   Home,
   BookOpen,
   User,
-  Mail
+  Mail,
+  MoveUpRight
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -12,5 +13,6 @@ export const Icons = {
   home: Home,
   about: BookOpen,
   contact: User,
-  mail: Mail
+  mail: Mail,
+  url: MoveUpRight
 };

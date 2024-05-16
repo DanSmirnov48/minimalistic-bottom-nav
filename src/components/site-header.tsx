@@ -3,6 +3,7 @@ import { NavItem } from "@/types";
 import { Separator } from "@/components/ui/separator"
 import { ThemeToggle } from "./theme-toggle";
 import { TooltipProvider } from "./ui/tooltip";
+import MoreOptionsDialog from "./more-options";
 
 export function SiteHeader() {
   return (
@@ -13,6 +14,7 @@ export function SiteHeader() {
           <div className="flex flex-1 items-center justify-end space-x-4 pr-1">
             <Separator orientation="vertical" decorative className="h-9 w-[0.07rem] rounded-full" />
             <nav className="flex items-center space-x-2">
+              <MoreOptionsDialog />
               <ThemeToggle />
             </nav>
           </div>
