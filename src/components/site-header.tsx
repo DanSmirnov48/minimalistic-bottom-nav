@@ -40,4 +40,9 @@ const mainNav: NavItem[] = [
     to: "/contact",
     icon: "mail",
   },
+  {
+    title: "Self",
+    to: "/self",
+    icon: "contact",
+  },
 ];

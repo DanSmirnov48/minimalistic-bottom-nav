@@ -11,6 +11,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
         <App />
       </ThemeProvider>
-    </BrowserRouter>,
-  </React.StrictMode>,
+    </BrowserRouter>
+  </React.StrictMode>
 )

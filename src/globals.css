@@ -75,51 +75,6 @@
   }
 }
 
-/* ul {
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  background: #000;
-  border-radius: 30px;
-  overflow: hidden;
-  box-shadow: 0 0 0 5px #333;
-  margin: 0;
-  padding: 0;
-} */
-
-/* ul li {
-  list-style: none;
-  width: 150px;
-} */
-
-/* ul li a {
-  display: block;
-  padding: 20px;
-  text-align: center;
-  color: #fff;
-  transition: 0.5s;
-  text-decoration: none;
-} */
-
-/* ul li.active a {
-  color: #262626;
-} */
-
-.slide-effect:nth-child(1).active ~ .slide {
-  left: 0;
-  opacity: 1;
-}
-.slide-effect:nth-child(2).active ~ .slide {
-  left: 45px;
-  opacity: 1;
-}
-.slide-effect:nth-child(3).active ~ .slide {
-  left: 90px;
-  opacity: 1;
-}
-
 .slide {
   position: absolute;
   margin-left: 5px;

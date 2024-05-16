@@ -1,30 +1,42 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import { NavItem } from "@/types";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from "react-router-dom";
 import { ChevronLeftIcon } from "lucide-react";
 import { Icons } from "@/components/icons";
+import React from "react";
 
 interface MainNavProps {
   navItems: NavItem[];
 }
 
 export function MainNav({ navItems }: MainNavProps) {
+  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  const location = useLocation();
+
   return (
-    <div className="flex overflow-hidden">
+    <div className="relative flex overflow-hidden">
       {navItems.map((item, index) => {
         const Icon = item.icon ? Icons[item.icon] : ChevronLeftIcon;
+        const isActive = location.pathname === item.to;
+
+        if (isActive && activeIndex !== index) {
+          setActiveIndex(index);
+        }
+
         return item.to ? (
           <NavLink
             key={index}
             to={item.to}
-            className={({ isActive }) =>
-              cn(
-                "slide-effect list-none w-[45px] block py-3.5 px-2 text-center transition-all duration-500 no-underline text-sm font-medium text-muted-foreground",
-                item.disabled && "cursor-not-allowed opacity-80",
-                isActive && "active"
-                // isActive && "active animate-pulse duration-2000 ease-linear text-[#262626] delay-500"
-              )
-            }
+            className={({ isActive }) => {
+              if (isActive && activeIndex !== index) {
+                setActiveIndex(index);
+              }
+              return cn(
+                'slide-effect list-none w-[45px] block py-3.5 px-2 text-center transition-all duration-500 no-underline text-sm font-medium text-muted-foreground',
+                item.disabled && 'cursor-not-allowed opacity-80',
+                isActive && 'active'
+              );
+            }}
           >
             <Icon className="h-5 w-5 m-auto" aria-hidden="true" />
           </NavLink>
@@ -37,7 +49,13 @@ export function MainNav({ navItems }: MainNavProps) {
           </span>
         );
       })}
-      <div className="slide"></div>
+      <div
+        className="slide"
+        style={{
+          left: activeIndex !== null ? `${activeIndex * 45}px` : '0',
+          opacity: activeIndex !== null ? 1 : 0,
+        }}
+      ></div>
     </div>
   );
 }
