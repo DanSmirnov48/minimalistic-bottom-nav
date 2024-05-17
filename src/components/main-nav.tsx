@@ -1,9 +1,10 @@
+import React from "react";
 import { cn } from "@/lib/utils";
 import { NavItem } from "@/types";
-import { NavLink, useLocation } from "react-router-dom";
-import { ChevronLeftIcon } from "lucide-react";
 import { Icons } from "@/components/icons";
-import React from "react";
+import { ChevronLeftIcon } from "lucide-react";
+import { NavLink, useLocation } from "react-router-dom";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface MainNavProps {
   navItems: NavItem[];
@@ -24,22 +25,28 @@ export function MainNav({ navItems }: MainNavProps) {
         }
 
         return item.to ? (
-          <NavLink
-            key={index}
-            to={item.to}
-            className={({ isActive }) => {
-              if (isActive && activeIndex !== index) {
-                setActiveIndex(index);
-              }
-              return cn(
-                'slide-effect list-none w-[45px] block py-3.5 px-2 text-center transition-all duration-500 no-underline text-sm font-medium text-muted-foreground',
-                item.disabled && 'cursor-not-allowed opacity-80',
-                isActive && 'active'
-              );
-            }}
-          >
-            <Icon className="h-5 w-5 m-auto" aria-hidden="true" />
-          </NavLink>
+          <Tooltip key={index}>
+            <TooltipTrigger>
+              <NavLink
+                to={item.to}
+                className={({ isActive }) => {
+                  if (isActive && activeIndex !== index) {
+                    setActiveIndex(index);
+                  }
+                  return cn(
+                    'list-none w-[45px] block py-3.5 px-2 text-center transition-all duration-500 no-underline text-sm font-medium text-muted-foreground',
+                    item.disabled && 'cursor-not-allowed opacity-80',
+                    isActive && 'active'
+                  );
+                }}
+              >
+                <Icon className="h-5 w-5 m-auto" aria-hidden="true" />
+              </NavLink>
+            </TooltipTrigger>
+            <TooltipContent className="mb-0.5">
+              <p>{item.title}</p>
+            </TooltipContent>
+          </Tooltip>
         ) : (
           <span
             key={index}

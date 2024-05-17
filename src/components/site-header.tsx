@@ -1,5 +1,5 @@
 import { MainNav } from "@/components/main-nav";
-import { NavItem } from "@/types";
+import { NavItem, OptionalNavItem } from "@/types";
 import { Separator } from "@/components/ui/separator"
 import { ThemeToggle } from "./theme-toggle";
 import { TooltipProvider } from "./ui/tooltip";
@@ -14,7 +14,7 @@ export function SiteHeader() {
           <div className="flex flex-1 items-center justify-end space-x-4 pr-1">
             <Separator orientation="vertical" decorative className="h-9 w-[0.07rem] rounded-full" />
             <nav className="flex items-center space-x-2">
-              <MoreOptionsDialog />
+              <MoreOptionsDialog navItems={moreOptionsNavItems} />
               <ThemeToggle />
             </nav>
           </div>
@@ -44,5 +44,24 @@ const mainNav: NavItem[] = [
     title: "Self",
     to: "/self",
     icon: "contact",
+  },
+];
+
+const moreOptionsNavItems: OptionalNavItem[] = [
+  {
+    title: "Twitter",
+    to: "/",
+  },
+  {
+    title: "GitHub",
+    to: "/",
+  },
+  {
+    title: "Resume",
+    to: "/",
+  },
+  {
+    title: "LinkedIn",
+    to: "/",
   },
 ];

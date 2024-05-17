@@ -13,8 +13,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Link } from 'react-router-dom';
 import { Icons } from './icons';
+import { OptionalNavItem } from '@/types';
 
-const MoreOptionsDialog = () => {
+interface MainNavProps {
+    navItems: OptionalNavItem[]
+}
+
+export default function MoreOptionsDialog({ navItems }: MainNavProps) {
     return (
         <DropdownMenu>
             <Tooltip>
@@ -29,34 +34,19 @@ const MoreOptionsDialog = () => {
             </Tooltip>
             <DropdownMenuContent side='top' className="w-44 mb-5" align="center" forceMount>
                 <DropdownMenuGroup>
-                    <DropdownMenuItem asChild>
-                        <Link to="/">
-                            Link 1
-                            <Icons.url className="ml-2 h-3 w-3 text-muted-foreground" />
-                        </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                        <Link to="/">
-                            Link 2
-                            <Icons.url className="ml-2 h-3 w-3 text-muted-foreground" />
-                        </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                        <Link to="/">
-                            Link 3
-                            <Icons.url className="ml-2 h-3 w-3 text-muted-foreground" />
-                        </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                        <Link to="/">
-                            Link 4
-                            <Icons.url className="ml-2 h-3 w-3 text-muted-foreground" />
-                        </Link>
-                    </DropdownMenuItem>
+                    {navItems.map((item, index) => {
+                        const Icon = item.icon ? Icons[item.icon] : Icons.url;
+                        return (
+                            <DropdownMenuItem asChild key={index}>
+                                <Link to={item.to} className='cursor-pointer text-muted-foreground'>
+                                    {item.title}
+                                    <Icon className="ml-2 h-3 w-3" />
+                                </Link>
+                            </DropdownMenuItem>
+                        )
+                    })}
                 </DropdownMenuGroup>
             </DropdownMenuContent>
         </DropdownMenu>
     )
 }
-
-export default MoreOptionsDialog
